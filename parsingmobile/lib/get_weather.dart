@@ -1,9 +1,13 @@
 // lib/get_weather.dart
+// ignore_for_file: library_private_types_in_public_api, avoid_print
+
 import 'package:flutter/material.dart';
 import 'weather_service.dart';
 import 'package:intl/intl.dart';
 
 class WeatherScreen extends StatefulWidget {
+  const WeatherScreen({super.key});
+
   @override
   _WeatherScreenState createState() => _WeatherScreenState();
 }
@@ -33,22 +37,22 @@ class _WeatherScreenState extends State<WeatherScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Weather Data'),
+        title: const Text('152022047 - Rizki Tazidi Zayd'),
         centerTitle: true,
         backgroundColor: Colors.teal,
       ),
       body: weatherData == null
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator())
           : Padding(
               padding: const EdgeInsets.all(16.0),
               child: ListView(
                 children: [
                   _buildSectionTitle('Overview'),
                   _buildOverviewCard(),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   _buildSectionTitle('Temperature and Humidity Details'),
                   _buildDetailsList(),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   _buildSectionTitle('Monthly Max Temperature and Humidity'),
                   _buildMonthYearVerticalList(weatherData!["month_year_max"]),
                 ],
@@ -60,7 +64,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
   Widget _buildSectionTitle(String title) {
     return Text(
       title,
-      style: TextStyle(
+      style: const TextStyle(
         fontSize: 18,
         fontWeight: FontWeight.bold,
         color: Colors.teal,
@@ -78,11 +82,11 @@ class _WeatherScreenState extends State<WeatherScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('Maximum Temperature: ${weatherData!["suhumax"]} °C',
-                style: TextStyle(fontSize: 16)),
+                style: const TextStyle(fontSize: 16)),
             Text('Minimum Temperature: ${weatherData!["suhumin"]} °C',
-                style: TextStyle(fontSize: 16)),
+                style: const TextStyle(fontSize: 16)),
             Text('Average Temperature: ${weatherData!["suhurata"]} °C',
-                style: TextStyle(fontSize: 16)),
+                style: const TextStyle(fontSize: 16)),
           ],
         ),
       ),
@@ -98,7 +102,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
           child: ListTile(
             title: Text(
               'ID: ${data["id"]}',
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             subtitle: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -144,7 +148,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                   padding: const EdgeInsets.all(12.0),
                   child: Text(
                     formatMonthYear(monthYear["bulan"]),
-                    style: TextStyle(fontSize: 14, color: Colors.black87),
+                    style: const TextStyle(fontSize: 14, color: Colors.black87),
                     textAlign: TextAlign.left,
                   ),
                 ),
